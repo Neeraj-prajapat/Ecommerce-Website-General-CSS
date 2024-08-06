@@ -1,0 +1,578 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Urbanist, sans-serif;
+
+}
+
+:root{
+  --bs-dark-color: #1a1d20;
+  --bs-dark-primary:#1c1c1c;
+  --bs-main-color:#fff;
+  --bs-primary-color:#c6c6c6;
+  --secondary-color: #29a9fd;
+  --bs-supporting-color: #C850C0;
+}
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html{
+  
+}
+
+h1, h2,h3,h4,h5{
+  font-family: 'Lexend Deca', sans-serif;
+  color: var( --bs-dark-color);
+  }
+
+h1{
+  font-size: 3.8rem;
+}
+
+h2{
+  line-height: 3rem;
+  font-weight: 600;
+  font-size: 3.4rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+p{
+  margin: 0;
+  font-weight: 400;
+  font-size: 1rem;
+  color: var( --bs-dark-color);
+  letter-spacing: 0.07rem;
+  line-height: 1.55rem;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+Link{
+  text-decoration: none;
+  display: inline-block;
+}
+
+li{
+  list-style: none;
+}
+
+/*? navbar styling */
+
+
+.nav-link{
+  &:link, 
+  &:visited{
+  color: black;
+  transition: color 0.3s linear;
+  }
+
+
+  &:hover,
+  &:active {
+    color:rgb(0,0,255);
+  }
+}
+
+.navbar-brand img {
+  width: 80%; /* Ensure the image fits the brand width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+  
+/* Base styles for the navbar-toggler button */
+.navbar-toggler {
+--bs-navbar-toggler-focus-width: 0; /* Removes the focus border */
+border: none
+
+}
+.navbar-toggler-icon {
+display: inline-block;
+width: 30px;
+height: 30px;
+background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+background-repeat: no-repeat;
+background-position: center;
+background-size: contain;
+
+}
+
+/* Styles for the cross icon when the button is active */
+.navbar-toggler.active .navbar-toggler-icon {
+background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M6 6l18 18M6 24L24 6' /%3e%3c/svg%3e");
+}
+
+
+  
+/* Base styles for the navbar-toggler button */
+.navbar-toggler {
+--bs-navbar-toggler-focus-width: 0; /* Removes the focus border */
+border:none;
+
+}
+.navbar-toggler-icon {
+display: inline-block;
+width: 30px;
+height: 30px;
+background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+background-repeat: no-repeat;
+background-position: center;
+background-size: contain;
+
+}
+
+/* Styles for the cross icon when the button is active */
+.navbar-toggler.active .navbar-toggler-icon {
+background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M6 6l18 18M6 24L24 6' /%3e%3c/svg%3e");
+}
+
+
+/* styling hero-section */
+
+.hero-section {
+  padding: 9rem 0;
+}
+
+.img-style{
+  width: 29rem;
+  height: auto;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+
+
+@media screen and (max-width:992px) {
+  .img-style {
+    max-width:80%;
+    /* width: 20rem; */
+    height: auto;
+  }
+
+} 
+
+
+/*? Services section */
+
+/* .Services-1,
+.Services-2,
+.Services-3 .card-body h3 {
+
+  font-size:1.5rem
+  
+} */
+
+.icon-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4.375rem; /* Adjust the size as needed */
+  height: 4.375rem; /* Adjust the size as needed */
+  border-radius: 50%; /* Makes the icon circular */
+  background-color: white; /* Background color for the circle */
+  color: blue; /* Icon color */
+  padding: 0.7rem;
+  
+}
+
+.card-body .icon-circle {
+  margin-bottom: 0.7rem; /* Space between icon and text */
+}
+
+/*? Trusted section */
+
+.trusted-icons{
+  color: grey
+}
+
+.trusted-bg{
+  background-color: #f6f8fa;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Urbanist, sans-serif;
+
+}
+
+:root{
+  --bs-dark-color: #1a1d20;
+  --bs-dark-primary:#1c1c1c;
+  --bs-main-color:#fff;
+  --bs-primary-color:#c6c6c6;
+  --secondary-color: #29a9fd;
+  --bs-supporting-color: #C850C0;
+}
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html{
+  
+}
+
+h1, h2,h3,h4,h5{
+  font-family: 'Lexend Deca', sans-serif;
+  color: var( --bs-dark-color);
+  }
+
+h1{
+  font-size: 3.8rem;
+}
+
+h2{
+  line-height: 3rem;
+  font-weight: 600;
+  font-size: 3.4rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+p{
+  margin: 0;
+  font-weight: 400;
+  font-size: 1rem;
+  color: var( --bs-dark-color);
+  letter-spacing: 0.07rem;
+  line-height: 1.55rem;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+Link{
+  text-decoration: none;
+  display: inline-block;
+}
+
+li{
+  list-style: none;
+}
+
+/*? navbar styling */
+
+
+.nav-link{
+  &:link, 
+  &:visited{
+  color: black;
+  transition: color 0.3s linear;
+  }
+
+
+  &:hover,
+  &:active {
+    color:rgb(0,0,255);
+  }
+}
+
+.navbar-brand img {
+  width: 80%; /* Ensure the image fits the brand width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+  
+/* Base styles for the navbar-toggler button */
+.navbar-toggler {
+--bs-navbar-toggler-focus-width: 0; /* Removes the focus border */
+border: none
+
+}
+.navbar-toggler-icon {
+display: inline-block;
+width: 30px;
+height: 30px;
+background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+background-repeat: no-repeat;
+background-position: center;
+background-size: contain;
+
+}
+
+/* Styles for the cross icon when the button is active */
+.navbar-toggler.active .navbar-toggler-icon {
+background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M6 6l18 18M6 24L24 6' /%3e%3c/svg%3e");
+}
+
+
+  
+/* Base styles for the navbar-toggler button */
+.navbar-toggler {
+--bs-navbar-toggler-focus-width: 0; /* Removes the focus border */
+border:none;
+
+}
+.navbar-toggler-icon {
+display: inline-block;
+width: 30px;
+height: 30px;
+background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+background-repeat: no-repeat;
+background-position: center;
+background-size: contain;
+
+}
+
+/* Styles for the cross icon when the button is active */
+.navbar-toggler.active .navbar-toggler-icon {
+background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M6 6l18 18M6 24L24 6' /%3e%3c/svg%3e");
+}
+
+
+/* styling hero-section */
+
+.hero-section {
+  padding: 9rem 0;
+}
+
+.img-style{
+  width: 29rem;
+  height: auto;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+
+
+@media screen and (max-width:992px) {
+  .img-style {
+    max-width:80%;
+    /* width: 20rem; */
+    height: auto;
+  }
+
+} 
+
+
+/*? Services section */
+
+/* .Services-1,
+.Services-2,
+.Services-3 .card-body h3 {
+
+  font-size:1.5rem
+  
+} */
+
+.icon-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4.375rem; /* Adjust the size as needed */
+  height: 4.375rem; /* Adjust the size as needed */
+  border-radius: 50%; /* Makes the icon circular */
+  background-color: white; /* Background color for the circle */
+  color: blue; /* Icon color */
+  padding: 0.7rem;
+  
+}
+
+.card-body .icon-circle {
+  margin-bottom: 0.7rem; /* Space between icon and text */
+}
+
+/*? Trusted section */
+
+.trusted-icons{
+  color: grey
+}
+
+.trusted-bg{
+  background-color: #f6f8fa;
+}
+
+.trusted-companies {
+  padding: 4rem 0;
+}
+
+
+
+/* styling contact-section */
+
+.contact-section .form-section{
+  width: 50%;
+}
+
+@media screen  and (max-width:992px) {
+
+    .contact-section .form-section{
+      width: 100%;
+  }
+
+}
+
+
+/* styling contact-section */
+
+.contact-section .form-section{
+  width: 50%;
+}
+
+@media screen  and (max-width:992px) {
+
+    .contact-section .form-section{
+      width: 100%;
+  }
+
+}
+
+
+
+/* styling footer-section */
+
+/* .main-footer-section{
+  padding: 14rem 0 9rem 0;
+}
+
+footer {
+  padding: 9rem 0 9rem 0;
+} */
+
+
+.contact-short {
+  max-width: 60vw;
+  margin: auto;
+  padding: 5rem 10rem;
+  background-color: #F6F8FA;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  transform: translateY(50%);
+}
+
+.text-heading {
+  color: rgb(24, 24, 29);
+}
+
+.footer-bg {
+  background-color: #0a1435;
+  padding: 8rem 0 3rem 0;
+  color:white
+}
+
+.footer-social-icons div {
+  padding: 1rem;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+}
+
+.footer-social-icons .icons {
+  color: #ffffff;
+  font-size: 2.4rem;
+  cursor: pointer;
+}
+
+footer h3, footer h4, footer p, footer a {
+  color: white;
+}
+
+
+@media (max-width: 768px) {
+  .contact-short {
+    max-width: 80vw;
+    margin: 4.8rem auto;
+    transform: translateY(0%);
+    text-align: center;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
