@@ -391,13 +391,16 @@ background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/s
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 4.375rem; /* Adjust the size as needed */
-  height: 4.375rem; /* Adjust the size as needed */
-  border-radius: 50%; /* Makes the icon circular */
-  background-color: white; /* Background color for the circle */
-  color: blue; /* Icon color */
-  padding: 0.7rem;
-  
+  width: 4.375rem;
+  /*Adjustthesizeasneeded*/height: 4.375rem;
+  /*Adjustthesizeasneeded*/border-radius: 50%;
+  /*Makestheiconcircular*/background-color: white;
+  /*Backgroundcolorforthecircle*/color: blue;
+  /*Iconcolor*/padding: 0.7rem;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
 }
 
 .card-body .icon-circle {
@@ -470,6 +473,14 @@ footer {
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  -moz-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  -o-transform: translateY(50%);
+  -webkit-border-radius:;
+  -moz-border-radius:;
+  -ms-border-radius:;
+  -o-border-radius:;
 }
 
 .text-heading {
@@ -505,14 +516,54 @@ footer h3, footer h4, footer p, footer a {
     margin: 4.8rem auto;
     transform: translateY(0%);
     text-align: center;
-  }
+    -webkit-transform: translateY(0%);
+    -moz-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    -o-transform: translateY(0%);
+}
 }
 
 
 
+/*? featured-section */
 
+.featured-section{
+  background-color: #f6f8fa;
+  padding-top: 4rem;
+  padding-bottom: 5rem;
+}
 
+.intro-data{
+  color: blue  
+}
 
+.image-container {
+  position: relative;
+  overflow: hidden; /* Ensures the effect doesn't overflow */
+}
+
+.image-container img {
+  transition: transform 0.3s ease; /* Smooth transition for image scaling */
+}
+
+.image-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%; /* Start outside the left edge */
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1); /* Light shadow effect */
+  transition: left 0.3s ease; /* Smooth transition for the line */
+}
+
+.image-container:hover::before {
+  left: 0; /* Move the line from left to right on hover */
+}
+
+.image-container:hover img {
+  transform: scale(1.05); /* Optional: Slight zoom effect */
+}
 
 
 

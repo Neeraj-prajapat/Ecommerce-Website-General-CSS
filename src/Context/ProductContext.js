@@ -1,4 +1,4 @@
-
+    
 import { createContext, useContext, useEffect, useReducer} from "react"
 import axios from "axios";
 import reducer from "../Reducer/ProductReducer"
@@ -26,13 +26,10 @@ const AppProvider = ({children}) => {
        try {
          const res = await axios.get(url);
          const products = await res.data;
-         dispatch({type:"SET_API_DATA", payload: products})
+         dispatch({type:"SET_API_DATA", payload: products})               
        } catch (error) {
         dispatch({type:"API_ERROR"})
        }
-
-        console.log(" ~ file: productcontex.js ~ line12 ~ getProducts", products)   
-
     }
 
     useEffect(()=>{

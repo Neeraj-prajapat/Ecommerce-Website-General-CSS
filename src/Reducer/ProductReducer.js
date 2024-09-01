@@ -78,7 +78,7 @@ export default ProductReducer;
 
 //? dispatch({ type: "SET_LOADING" });
 
-// Current State Before "SET_LOADING" Action:
+//* Current State Before "SET_LOADING" Action:
 
 // isLoading: false (initial value)
 // isError: false (initial value)
@@ -86,8 +86,8 @@ export default ProductReducer;
 // featureProducts: [] (empty array)
 
 
-// State After the Action is Processed:
-// When the reducer handles the "SET_LOADING" action, it returns:
+//* State After the Action is Processed:
+//* When the reducer handles the "SET_LOADING" action, it returns:
 
 
 // {
@@ -96,7 +96,7 @@ export default ProductReducer;
 // }
 
 
-// This updates the state to:
+//* This updates the state to:
 
 // isLoading: true (updated value)
 // isError: false (remains unchanged)
@@ -121,8 +121,8 @@ export default ProductReducer;
 
 //? dispatch({ type: "SET_API_DATA", payload: products });
 
-// Current State Before "SET_API_DATA" Action:
-// Assuming the "SET_LOADING" action was already processed, the current state would be:
+//* Current State Before "SET_API_DATA" Action:
+//* Assuming the "SET_LOADING" action was already processed, the current state would be:
 
 // isLoading: true (set by the previous action)
 // isError: false (remains unchanged)
@@ -130,8 +130,8 @@ export default ProductReducer;
 // featureProducts: [] (still empty)
 
 
-// State After the Action is Processed:
-// When the reducer handles the "SET_API_DATA" action, it returns:
+//* State After the Action is Processed:
+//* When the reducer handles the "SET_API_DATA" action, it returns:
 
 
 // {
