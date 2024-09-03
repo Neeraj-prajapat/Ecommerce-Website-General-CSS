@@ -44,6 +44,7 @@
 
 import React from 'react';
 import { Link } from "react-router-dom";
+import FormatePrice from '../Helpers/FormatePrice';
 
 const Product = ({ id, name, image, price, category }) => {
   return (
@@ -70,7 +71,7 @@ const Product = ({ id, name, image, price, category }) => {
           <div className="card-body py-2">
             <div className="d-flex justify-content-between">
               <p className='small text-body-secondary'>{name}</p>
-              <p className='small text-body-secondary'>{price}</p>
+              <p className='small text-body-secondary'>{ <FormatePrice price = {price}/>}</p>
             </div>
           </div>
         </div>
