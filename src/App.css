@@ -63,7 +63,7 @@ p{
   text-rendering: optimizeLegibility;
 }
 
-Link{
+a, Link{
   text-decoration: none;
   display: inline-block;
 }
@@ -204,80 +204,6 @@ background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/s
 
 .trusted-bg{
   background-color: #f6f8fa;
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
-
-
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Urbanist, sans-serif;
-
-}
-
-:root{
-  --bs-dark-color: #1a1d20;
-  --bs-dark-primary:#1c1c1c;
-  --bs-main-color:#fff;
-  --bs-primary-color:#c6c6c6;
-  --secondary-color: #29a9fd;
-  --bs-supporting-color: #C850C0;
-}
-
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-html{
-  
-}
-
-h1, h2,h3,h4,h5{
-  font-family: 'Lexend Deca', sans-serif;
-  color: var( --bs-dark-color);
-  }
-
-h1{
-  font-size: 3.8rem;
-}
-
-h2{
-  line-height: 3rem;
-  font-weight: 600;
-  font-size: 3.4rem;
-}
-
-h3 {
-  font-size: 1.8rem;
-  font-weight: 400;
-}
-
-p{
-  margin: 0;
-  font-weight: 400;
-  font-size: 1rem;
-  color: var( --bs-dark-color);
-  letter-spacing: 0.07rem;
-  line-height: 1.55rem;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-}
-
-Link{
-  text-decoration: none;
-  display: inline-block;
-}
-
-li{
-  list-style: none;
 }
 
 /*? navbar styling */
@@ -566,8 +492,24 @@ footer h3, footer h4, footer p, footer a {
 }
 
 
+                /* //? SinglePage styling  */
 
-
+ .product-data .description {
+  text-align: justify ;
+ }               
+                
+ .warranty-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem; /* Adjust the size as needed */
+  height: 3rem; /* Adjust the size as needed */
+  border-radius: 50%; /* Makes the icon circular */
+  background-color: rgb(200, 157, 157); /* Background color for the circle */
+  color: black; /* Icon color */
+  padding: 0.7rem;
+  
+}
 
 
 

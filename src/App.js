@@ -11,6 +11,7 @@ import ErrorPage from "./Component/ErrorPage";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./Component/Footer";
+import SingleProduct from "./Component/SingleProduct";
 
 
 
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/singleproduct/:id" element={<SingleProduct/>} />
           <Route path="/products" element={<Products />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<ErrorPage />} />
