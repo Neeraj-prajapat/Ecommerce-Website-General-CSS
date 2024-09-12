@@ -6,6 +6,7 @@ import MyImage from './MyImage'
 import FormatPrice from '../Helpers/FormatPrice'
 import { TbReplace, TbTruckDelivery } from "react-icons/tb";
 import { MdSecurity } from "react-icons/md";
+import StarRating from './StarRating';
 
 const API = "https://api.pujakaitem.com/api/products"
 
@@ -32,19 +33,19 @@ const SingleProduct =() =>{
             <PageNavigation title ={name}/>
             <div className="container mt-5">
                 <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-lg-6">
                         <div className="product-images">
                             <MyImage imgs ={image}/>
                         </div>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-lg-6">
                         <div className="product-data">
                             <h2 className="fw-lighter mb-4">{name}</h2>
-                            <p>{stars}</p>
-                            <p className="product-data-price">
+                            <StarRating stars = {stars} reviews= {reviews}/>
+                            <p className="product-data-price mt-3 mb-2">
                                 MRP: <del> <FormatPrice price = {price + 250000}/> </del>
                             </p>
-                            <p className="text-primary product-data-price product-data-real-price">
+                            <p className="text-primary product-data-price product-data-real-price mb-2">
                                 Deal of the Day: <FormatPrice price = {price}/>
                             </p>
                             <p className="description">{description}</p>
@@ -53,25 +54,25 @@ const SingleProduct =() =>{
                                     <div className="d-flex justify-content-center align-items-center">
                                         <TbTruckDelivery className="warranty-icon" size={20}/>
                                     </div>    
-                                    <p>Free Delivery</p>
+                                    <p className="warranty-paragraph">Free Delivery</p>
                                 </div>                      
                                 <div className="product-warranty-data">
                                     <div className="d-flex justify-content-center align-items-center">
                                         <TbReplace className="warranty-icon" size={20}/>
                                     </div>
-                                    <p>30 Days Replacement </p>
+                                    <p className="warranty-paragraph">30 Days Replacement </p>
                                 </div>                      
                                 <div className="product-warranty-data">
                                     <div className="d-flex justify-content-center align-items-center">
                                         <MdSecurity className="warranty-icon" size={20}/>
                                     </div>
-                                    <p>2 Years Warranty</p>
+                                    <p className="warranty-paragraph">2 Years Warranty</p>
                                 </div>                      
                                 <div className="product-warranty-data">
                                     <div className="d-flex justify-content-center align-items-center">
                                         <TbTruckDelivery className="warranty-icon" size={20}/>
                                     </div>
-                                    <p>Fast Delivery</p>
+                                    <p className="warranty-paragraph">Fast Delivery</p>
                                 </div>                      
                             </div>
                             <hr className="p-0 mt-0" />        
@@ -79,7 +80,7 @@ const SingleProduct =() =>{
                                 <p> 
                                     Available: <span className="fw-bold text-danger">{ stock ? "In stock" : "Not Available" }</span>
                                 </p>
-                                <p>
+                                <p className="my-1">
                                     ID : <span className="fw-bold text-danger"> {id} </span>
                                 </p>
                                 <p>

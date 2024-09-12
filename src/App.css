@@ -497,7 +497,15 @@ footer h3, footer h4, footer p, footer a {
  .product-data .description {
   text-align: justify ;
  }               
-                
+ 
+ .product-warranty-data {
+  display: flex;
+  flex-direction: column; /* Align items in a column */
+  align-items: center; /* Center align items horizontally */
+  text-align: center; /* Center align text */
+}
+
+
  .warranty-icon {
   display: flex;
   justify-content: center;
@@ -511,8 +519,16 @@ footer h3, footer h4, footer p, footer a {
   
 }
 
+/* .warranty-paragraph{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
 
 
+.warranty-paragraph {
+  margin-top: 0.3rem; /* Space between the icon and the text */
+}
 
 
 
