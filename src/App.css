@@ -533,8 +533,54 @@ footer h3, footer h4, footer p, footer a {
 
 
 
+/* //? AddtoCart styling */
 
 
+ .color-selection-container {
+  display: flex;
+  align-items: center; /* Vertically centers the text and buttons */
+}
+
+.colors-text {
+  margin-right: 1rem; /* Space between the text and buttons */
+}
+
+.color-palette {
+  display: flex;
+  align-items: center; /* Ensures buttons align vertically with text */
+}
+
+.btnStyle {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  outline: none;
+  position: relative;
+}
+
+.btnStyle:hover {
+  transform: scale(1.1);
+}
+
+.btnStyle:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.btnStyle.active {
+  border: 2px solid #000;
+}
+
+.check-icon {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 
 
