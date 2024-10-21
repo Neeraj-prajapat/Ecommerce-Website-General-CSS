@@ -46,7 +46,10 @@ export default function Navbar() {
                   <Link className="nav-link" to="/products">Products</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link bg-primary ms-1 me-2 rounded-3 px-3" to="/products">Login in</Link>
+                  <Link className="nav-link bg-primary ms-1 me-2 rounded-3 px-3" to="/login">Login </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link bg-primary ms-1 me-2 rounded-3 px-3" to="/register"> Signup </Link>
                 </li>
                 <li className="nav-item me-5">
                   <Link className="nav-link position-relative" to="/cart">

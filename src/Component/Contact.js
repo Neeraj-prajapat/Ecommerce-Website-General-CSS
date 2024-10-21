@@ -1,6 +1,64 @@
 import React from 'react';
+import { useState } from 'react';
+
 
 export default function Contact() {
+
+  const [ contact, setContact] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: ""
+})
+
+const handleInput = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+
+    setContact({
+        ...contact,
+        [name]: value,
+    })
+    
+    // setContact((prev) => {
+    //   ...prev,
+    //   [name]: value,
+    // })
+}
+
+//? handling the form submission
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  alert(contact)
+  console.log(contact)
+
+  try {
+      const response = await fetch("http://localhost:8000/api/auth/contact", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(contact)
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        alert("Delivered successful");
+        setContact({ firstName: "", lastName: "", email: "", message: "" });
+        console.log(responseData);
+      } else {
+        console.log("error inside response ", "error");
+      }
+
+      console.log(response)
+  } catch (error) {
+      console.log("contact:", error)
+  }
+}
+
+
+
+
   return (
       <div className='container contact-section mb-5'>
       <h2 className='text-center my-5'>Feel Free To Contact Us</h2>
@@ -17,34 +75,39 @@ export default function Contact() {
 
       <div className="row mt-5">
         <div className='form-section mx-auto'>
-          <form action='https://formspree.io/f/myzgwjdo' method='POST' className='contact-inputs' >
+          {/* <form action='https://formspree.io/f/myzgwjdo' method='POST' className='contact-inputs' > */}
+          <form onSubmit={handleSubmit} className='contact-inputs' >
 
             <div className='mb-3'>
               <div className="row">
                 <div className="col col-lg-6">
-                  <label htmlFor="inputFirstName" className="form-label">First name</label>
+                  <label htmlFor="firstName" className="form-label">First name</label>
                   <input
                     type="text"
                     required
                     className="form-control"
                     placeholder="First name"
                     aria-label="First name"
-                    id="inputFirstName"
+                    id= "firstName"
                     name="firstName"
                     autoComplete='off'
+                    value= {contact.firstName}
+                    onChange={handleInput}
                   />
                 </div>
                 <div className="col col-lg-6">
-                <label htmlFor="inputLastName" className="form-label">Last name</label>
+                <label htmlFor="lastName" className="form-label">Last name</label>
                   <input
                     type="text"
                     required
                     className="form-control"
                     placeholder="Last name"
                     aria-label="Last name"
-                    id="inputLastName"
+                    id= "lastName"
                     name="lastName"
                     autoComplete='off'
+                    value= {contact.lastName}
+                    onChange={handleInput}
                   />
                 </div>
               </div>
@@ -53,29 +116,33 @@ export default function Contact() {
             <div className="mb-3">
               {/* <label htmlFor="exampleFormControlInput1" className="form-label text-white">Email address</label>
               <input type="email" required className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email"/> */}
-              <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
+              <label htmlFor="email" className="form-label">Email address</label>
               <input
                 type="email"
                 required
                 className="form-control"
-                id="exampleFormControlInput1"
+                id= "email"
                 placeholder="name@example.com"
                 name="email"
                 autoComplete='off'
+                value= {contact.email}
+                onChange={handleInput}
               />
             </div>
 
             <div className="mb-3">
               {/* <label htmlFor="exampleFormControlTextarea1" className="form-label text-white">Textarea</label>
               <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="message"></textarea> */}
-              <label htmlFor="exampleFormControlTextarea1" className="form-label">Textarea</label>
+              <label htmlFor="message" className="form-label">Textarea</label>
               <textarea
                 className="form-control"
                 required
-                id="exampleFormControlTextarea1"
+                id="message"
                 rows="3"
                 name="message"
                 autoComplete='off'
+                value= {contact.message}
+                onChange={handleInput}
               ></textarea>
             </div>
 
