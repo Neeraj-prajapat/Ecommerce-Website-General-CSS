@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useProductContext } from "../Context/ProductContext";  // Import the context
 
 export default function Register() {
 
@@ -10,6 +11,8 @@ export default function Register() {
     })
 
     const navigate = useNavigate();
+    const { storeTokenInLS } = useProductContext();  // Destructure the token function from context
+
     const handleInput = (e) => {
         let name = e.target.name;
         let value = e.target.value;
@@ -23,8 +26,10 @@ export default function Register() {
     //? handling the form submission
     const handleSubmit = async (e) => {
       e.preventDefault();
-      alert(user)
-      console.log(user)
+
+     // Displaying user details properly in the alert
+    alert(JSON.stringify(user));
+    console.log(user);
 
       try {
           const response = await fetch("http://localhost:8000/api/auth/login", {
@@ -37,18 +42,26 @@ export default function Register() {
 
           if (response.ok) {
             const responseData = await response.json();
+              console.log(  "res from server", responseData);
+              //* stored the token in localhost
+              // storetokenInLS(responseData.token);
+              // localStorage.setItem("token", responseData.token);
+
+              //* Store the token using the context method
+              storeTokenInLS(responseData.token);
+
+            
             alert("Login Successful");
             setUser({  email: "", password: "" });
-            console.log(responseData);
             navigate("/");
           } else {
-            alert("invalid credentials")
+            alert("invalid credentials");
             console.log("invalid credentials");
           }
   
-          console.log(response)
+          console.log( "login form", response);
       } catch (error) {
-          console.log("login:", error)
+          console.log("login:", error);
       }
   }
 

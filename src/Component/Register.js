@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useProductContext } from "../Context/ProductContext";  // Import the context
 
 export default function Register() {
 
@@ -13,6 +14,8 @@ export default function Register() {
     })
 
     const navigate = useNavigate();
+    const { storeTokenInLS } = useProductContext();  // Destructure the token function from context
+
     const handleInput = (e) => {
         let name = e.target.name;
         let value = e.target.value;
@@ -40,9 +43,18 @@ export default function Register() {
 
             if (response.ok) {
               const responseData = await response.json();
+              console.log(  "res from server", responseData);
+              // stored the token in localhost
+              // storetokenInLS(responseData.token);
+              // localStorage.setItem("token", responseData.token);
+
+                //* Store the token using the context method
+                storeTokenInLS(responseData.token);
+
+
+
               alert("registration successful");
               setUser({firstName: "", lastName: "", email: "", phone: "", password: "" });
-              console.log(responseData);
               navigate("/login");
             } else {
               console.log("error inside response ", "error");

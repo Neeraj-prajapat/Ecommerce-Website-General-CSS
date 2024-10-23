@@ -6,6 +6,7 @@ import reducer from "../Reducer/ProductReducer"
 
 const AppContext = createContext();
 
+
 const API = "https://api.pujakaitem.com/api/products"
 
 const AppProvider = ({children}) => {
@@ -16,7 +17,8 @@ const AppProvider = ({children}) => {
         products: [],
         featureProducts: [],
         isSingleLoading: false,
-        singleProduct:{}
+        singleProduct:{},
+        token: localStorage.getItem("token") || null, // Get token from localStorage
     }
     const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -46,12 +48,24 @@ const AppProvider = ({children}) => {
       }
     }
 
+     // Function to store token in localStorage
+    const storeTokenInLS = (serverToken) => {
+        localStorage.setItem("token", serverToken);
+        dispatch({ type: "SET_TOKEN", payload: serverToken });
+    };
+
+  // Function to clear token from localStorage
+    const clearTokenFromLS = () => {
+        localStorage.removeItem("token");
+        dispatch({ type: "CLEAR_TOKEN" });
+    };
+
     useEffect(()=>{
         getProducts(API);
     }, [])
 
     return(
-        <AppContext.Provider value={{...state, getSingleProduct}}>
+        <AppContext.Provider value={{...state, getSingleProduct,  storeTokenInLS, clearTokenFromLS,}}>
          {children}
         </AppContext.Provider>
     ); 

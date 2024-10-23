@@ -1,10 +1,13 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
+import ToggleAuthButton from './ToggleAuthButton'; // Adjust the path as necessary
+import { useProductContext } from "../Context/ProductContext";  // Import the context
 
 export default function Navbar() {
 
   const [isActive, setIsActive] = useState(false);
+  const { token } = useProductContext(); // Access token from context
 
   const handleToggle = () => {
     setIsActive(!isActive);
@@ -45,12 +48,28 @@ export default function Navbar() {
                 <li className="nav-item">
                   <Link className="nav-link" to="/products">Products</Link>
                 </li>
+
+
+
+                 {/* Toggle Auth Button for Login/Logout */}
                 <li className="nav-item">
+                  <ToggleAuthButton isLoggedIn={!!token} />
+                </li>
+                {/* Conditionally render the Registration link based on authentication status */}
+                {!token && (
+                  <li className="nav-item">
+                    <Link className="nav-link bg-primary ms-1 me-2 rounded-3 px-3" to="/register">Signup</Link>
+                  </li>
+                )}
+
+
+
+                {/* <li className="nav-item">
                   <Link className="nav-link bg-primary ms-1 me-2 rounded-3 px-3" to="/login">Login </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link bg-primary ms-1 me-2 rounded-3 px-3" to="/register"> Signup </Link>
-                </li>
+                </li> */}
                 <li className="nav-item me-5">
                   <Link className="nav-link position-relative" to="/cart">
                   <FiShoppingCart  className='cart-trolley' style={{ fontSize: '24px' }}/>
