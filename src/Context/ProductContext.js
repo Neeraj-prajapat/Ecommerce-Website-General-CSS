@@ -19,8 +19,10 @@ const AppProvider = ({children}) => {
         isSingleLoading: false,
         singleProduct:{},
         token: localStorage.getItem("token") || null, // Get token from localStorage
+        user: null, // State to hold user data if authenticated
     }
     const [state, dispatch] = useReducer(reducer, initialState);
+    
 
     const getProducts= async(url)=> {
         
@@ -60,12 +62,42 @@ const AppProvider = ({children}) => {
         dispatch({ type: "CLEAR_TOKEN" });
     };
 
-    useEffect(()=>{
-        getProducts(API);
-    }, [])
+
+
+     // JWT Authentication - Get the currently logged-in user data
+  const userAuthentication = async () => {
+    const token = state.token; // Get token from state
+
+    if (!token) return; // Exit if no token is found
+
+    try {
+      const response = await fetch("http://localhost:8000/api/auth/user", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("User data:", data);
+        dispatch({ type: "SET_USER", payload: data }); // Save user data in state
+      } else {
+        clearTokenFromLS(); // Clear token if unauthorized
+        console.log("Failed to authenticate user.");
+      }
+    } catch (error) {
+      console.log("Error fetching user data:", error);
+    }
+  };
+
+  useEffect(() => {
+    getProducts(API);
+    userAuthentication(); // Check for authenticated user on mount
+  }, [state.token,  userAuthentication]); // Re-run on token change
 
     return(
-        <AppContext.Provider value={{...state, getSingleProduct,  storeTokenInLS, clearTokenFromLS,}}>
+        <AppContext.Provider value={{...state, getSingleProduct,  storeTokenInLS, clearTokenFromLS, userAuthentication}}>
          {children}
         </AppContext.Provider>
     ); 

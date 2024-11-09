@@ -1,8 +1,9 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect,  } from 'react';
+// Import context or props where user data is available
 
 
-export default function Contact() {
+export default function Contact({user}) {
 
   const [ contact, setContact] = useState({
     firstName: "",
@@ -10,6 +11,19 @@ export default function Contact() {
     email: "",
     message: ""
 })
+
+  // Populate form fields with user data if available
+  useEffect(() => {
+    if (user) {
+      setContact((prevContact) => ({
+        ...prevContact,
+        firstName: user.firstName || "",
+        lastName: user.lastName || "",
+        email: user.email || "",
+      }));
+    }
+  }, [user]);
+
 
 const handleInput = (e) => {
     let name = e.target.name;

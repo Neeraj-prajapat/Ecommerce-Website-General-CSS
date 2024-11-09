@@ -65,7 +65,9 @@ const ProductReducer = (state, action) =>{
                          token: action.payload
                 };
             case "CLEAR_TOKEN":
-                return { ...state, token: "" };    
+                return { ...state, token: null, user: null };
+            case "SET_USER":
+                return { ...state, user: action.payload };    
         
         default:
             return state
