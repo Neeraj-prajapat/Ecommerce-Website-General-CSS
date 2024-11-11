@@ -80,8 +80,8 @@ const AppProvider = ({children}) => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("User data:", data);
-        dispatch({ type: "SET_USER", payload: data }); // Save user data in state
+        console.log("User data:", data.userData);
+        dispatch({ type: "SET_USER", payload: data.userData }); // Save user data in state
       } else {
         clearTokenFromLS(); // Clear token if unauthorized
         console.log("Failed to authenticate user.");
@@ -92,9 +92,18 @@ const AppProvider = ({children}) => {
   };
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      dispatch({ type: "SET_TOKEN", payload: token }); // Set token in state initially
+    }
     getProducts(API);
     userAuthentication(); // Check for authenticated user on mount
-  }, [state.token,  userAuthentication]); // Re-run on token change
+  }, []); // Run once on mount to load token and fetch data
+  
+  // useEffect(() => {
+  //   getProducts(API);
+  //   userAuthentication(); // Check for authenticated user on mount
+  // }, [state.token]); // Re-run on token change
 
     return(
         <AppContext.Provider value={{...state, getSingleProduct,  storeTokenInLS, clearTokenFromLS, userAuthentication}}>
@@ -117,7 +126,7 @@ export {AppProvider, AppContext, useProductContext}
 
 
 
-
+  
 
 
 
@@ -208,7 +217,7 @@ export {AppProvider, AppContext, useProductContext}
 
 
 // export {AppProvider, AppContext, useProductContext}
-
+ 
 
 
 

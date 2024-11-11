@@ -1,9 +1,10 @@
 import React from 'react';
 import { useState, useEffect,  } from 'react';
 // Import context or props where user data is available
+import { useProductContext } from '../Context/ProductContext';
 
-
-export default function Contact({user}) {
+export default function Contact() {
+  const { user } = useProductContext(); // Access user from context
 
   const [ contact, setContact] = useState({
     firstName: "",
