@@ -81,8 +81,8 @@ export default function Navbar() {
 
                  {/* Conditionally render Admin link if user is an admin */}
                 {user && user.isAdmin && (
-                  <li>
-                    <Link to="/admin">Admin</Link>
+                  <li className="nav-item">
+                    <Link className="nav-link btn btn-outline-primary" role="button" to="/admin">Admin</Link>
                   </li>
                  )}
               </ul>
