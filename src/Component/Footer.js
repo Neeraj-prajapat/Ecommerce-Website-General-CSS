@@ -63,7 +63,7 @@ const Footer = () => {
           <div className="row">
 
             <div className="col-lg-3 col-12">
-              <h3 className="text-center text-lg-start">Thapa Technical</h3>
+              <h3 className="text-center text-lg-start">Algolyte</h3>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </div>
 
@@ -113,7 +113,7 @@ const Footer = () => {
             <div className="col-md-8">
               <div className="d-flex justify-content-center justify-content-md-start">
                 <p>
-                  @{new Date().getFullYear()} ThapaTechnical. All Rights Reserved
+                  @{new Date().getFullYear()} Algolyte. All Rights Reserved
                 </p>
               </div>
             </div>

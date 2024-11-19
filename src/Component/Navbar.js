@@ -7,7 +7,7 @@ import { useProductContext } from "../Context/ProductContext";  // Import the co
 export default function Navbar() {
 
   const [isActive, setIsActive] = useState(false);
-  const { token } = useProductContext(); // Access token from context
+  const { token, user } = useProductContext(); // Access token from context
 
   const handleToggle = () => {
     setIsActive(!isActive);
@@ -19,8 +19,8 @@ export default function Navbar() {
   return (
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <span className="navbar-brand">
-            <img src='./images/logo.png' alt="logo img" />
+          <span className="navbar-brand fw-bold ">
+            {/* <img src='./image/logo.png' alt="Algolyte logo" /> */} Algolyte
           </span>
           <button 
             className={`navbar-toggler ${isActive ? 'active' : ''}`} 
@@ -78,6 +78,13 @@ export default function Navbar() {
                   </span>
                   </Link>
                 </li>
+
+                 {/* Conditionally render Admin link if user is an admin */}
+                {user && user.isAdmin && (
+                  <li>
+                    <Link to="/admin">Admin</Link>
+                  </li>
+                 )}
               </ul>
           </div>
         </div>

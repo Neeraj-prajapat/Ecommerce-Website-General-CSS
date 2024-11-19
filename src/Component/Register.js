@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useProductContext } from "../Context/ProductContext";  // Import the context
+import { toast } from 'react-toastify';
 
 export default function Register() {
 
@@ -29,7 +30,7 @@ export default function Register() {
     //? handling the form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-        alert(user)
+        // alert(user)
         console.log(user)
 
         try {
@@ -41,9 +42,12 @@ export default function Register() {
                 body: JSON.stringify(user)
             });
 
+            const responseData = await response.json();
+            console.log(  "res from server", responseData.extraDetails);
+
             if (response.ok) {
-              const responseData = await response.json();
-              console.log(  "res from server", responseData);
+              // const responseData = await response.json();
+              // console.log(  "res from server", responseData);
               // stored the token in localhost
               // storetokenInLS(responseData.token);
               // localStorage.setItem("token", responseData.token);
@@ -53,10 +57,11 @@ export default function Register() {
 
 
 
-              alert("registration successful");
+              toast.success("registration successful");
               setUser({firstName: "", lastName: "", email: "", phone: "", password: "" });
               navigate("/login");
             } else {
+              toast(responseData.extraDetails ? responseData.extraDetails : responseData.message)
               console.log("error inside response ", "error");
             }
     

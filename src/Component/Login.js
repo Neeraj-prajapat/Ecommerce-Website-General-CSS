@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useProductContext } from "../Context/ProductContext";  // Import the context
+import { toast } from 'react-toastify';
 
 export default function Register() {
 
@@ -28,7 +29,7 @@ export default function Register() {
       e.preventDefault();
 
      // Displaying user details properly in the alert
-    alert(JSON.stringify(user));
+    // alert(JSON.stringify(user));
     console.log(user);
 
       try {
@@ -40,9 +41,12 @@ export default function Register() {
               body: JSON.stringify(user)
           });
 
+          const responseData = await response.json();
+          console.log(  "res from server", responseData);
+
           if (response.ok) {
-            const responseData = await response.json();
-              console.log(  "res from server", responseData);
+            // const responseData = await response.json();
+            //   console.log(  "res from server", responseData);
               //* stored the token in localhost
               // storetokenInLS(responseData.token);
               // localStorage.setItem("token", responseData.token);
@@ -51,11 +55,11 @@ export default function Register() {
               storeTokenInLS(responseData.token);
 
             
-            alert("Login Successful");
+            toast.success("Login Successful");
             setUser({  email: "", password: "" });
             navigate("/");
           } else {
-            alert("invalid credentials");
+            toast.error(responseData.extraDetails ? responseData.extraDetails : responseData.message)
             console.log("invalid credentials");
           }
   
@@ -112,7 +116,5 @@ export default function Register() {
     </div>
   );
 }
-
-
 
 

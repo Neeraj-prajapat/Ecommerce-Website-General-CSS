@@ -14,6 +14,11 @@ import Footer from "./Component/Footer";
 import SingleProduct from "./Component/SingleProduct";
 import Login from "./Component/Login";
 import Register from "./Component/Register";
+import AdminLayouts from "./Component/Layouts/AdminLayouts";
+import AdminUsers from "./Component/Layouts/AdminUsers";
+import AdminContacts from "./Component/Layouts/AdminContacts";
+import AdminUpdate from "./Component/Layouts/AdminUpdate";
+import Unauthorized from "./Component/Layouts/Unauthorized";
 
 
 
@@ -26,7 +31,7 @@ export default function App() {
   return (
       <BrowserRouter>
         <Navbar />
-        <Routes>
+        <Routes>``
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
@@ -36,6 +41,12 @@ export default function App() {
           <Route path="/register" element={<Register/>} />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<ErrorPage />} />
+          <Route path="/admin" element= {<AdminLayouts/>}>
+            <Route path="users" element= {<AdminUsers/>}/>
+            <Route path="contacts" element= {<AdminContacts/>}/>
+            <Route path="/admin/users/:id/edit" element= {<AdminUpdate/>}/>
+          </Route>
+          <Route path="/unauthorized" element={<Unauthorized />} />                {/* Unauthorized page route */}
         </Routes>
         <Footer/>
       </BrowserRouter>

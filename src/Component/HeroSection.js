@@ -13,7 +13,7 @@ export default function HeroSection(props) {
     <div className="container hero-section">
     <div className="row mb-5">
         <div className="order-lg-0 order-1 col-12 col-md-12 col-lg-6 text-center text-lg-start mt-5 mt-lg-0  d-flex flex-column justify-content-center ">
-            <h1 className='text-capitalize fw-bold' >Thapa {props.heading} </h1>
+            <h1 className='text-capitalize fw-bold' >Algolyte {props.heading} </h1>
             <p className='mt-3 mb-4'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas maiores unde quae harum. 
              Hic quibusdam soluta nam,deleniti, quas ratione quam molestiae laboriosam illo voluptatibus,
              consequuntur repudiandae porro.</p>

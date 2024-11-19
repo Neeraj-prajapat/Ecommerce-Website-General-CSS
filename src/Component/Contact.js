@@ -48,7 +48,7 @@ const handleSubmit = async (e) => {
   console.log(contact)
 
   try {
-      const response = await fetch("http://localhost:8000/api/auth/contact", {
+      const response = await fetch("http://localhost:8000/api/form/contact", {
           method: "POST",
           headers: {
               "Content-Type": "application/json"

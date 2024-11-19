@@ -12,7 +12,7 @@ const API = "https://api.pujakaitem.com/api/products"
 const AppProvider = ({children}) => {
 
     const initialState ={
-        isLoading: false, 
+        isLoading: true, 
         isError: false,
         products: [],
         featureProducts: [],
@@ -22,6 +22,8 @@ const AppProvider = ({children}) => {
         user: null, // State to hold user data if authenticated
     }
     const [state, dispatch] = useReducer(reducer, initialState);
+    const authorizationToken = state.token ? `Bearer ${state.token}` : null; // Compute token when available
+   
     
 
     const getProducts= async(url)=> {
@@ -65,31 +67,35 @@ const AppProvider = ({children}) => {
 
 
      // JWT Authentication - Get the currently logged-in user data
-  const userAuthentication = async () => {
-    const token = state.token; // Get token from state
+     const userAuthentication = async () => {
+      const token = state.token; // Get token from state
+      
+    
+      if (!token) return; // Exit if no token is found
 
-    if (!token) return; // Exit if no token is found
-
-    try {
-      const response = await fetch("http://localhost:8000/api/auth/user", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log("User data:", data.userData);
-        dispatch({ type: "SET_USER", payload: data.userData }); // Save user data in state
-      } else {
+      dispatch({ type: "SET_AUTH_LOADING", payload: true }); // Set auth loading
+    
+      try {
+        const response = await axios.get("http://localhost:8000/api/auth/user", {
+          headers: {
+            Authorization: authorizationToken,
+          },
+        });
+    
+        if (response.status === 200) {
+          const data = response.data;
+          console.log("User data:", data.userData);
+          dispatch({ type: "SET_USER", payload: data.userData }); // Save user data in state
+        }
+      } catch (error) {
+        console.error("Failed to authenticate user:", error.response?.data || error.message);
         clearTokenFromLS(); // Clear token if unauthorized
-        console.log("Failed to authenticate user.");
-      }
-    } catch (error) {
-      console.log("Error fetching user data:", error);
-    }
-  };
+        alert("Authentication failed. Please log in again.");
+      } finally {
+        dispatch({ type: "SET_AUTH_LOADING", payload: false }); // Stop auth loading
+      } 
+    };
+    
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -106,7 +112,8 @@ const AppProvider = ({children}) => {
   // }, [state.token]); // Re-run on token change
 
     return(
-        <AppContext.Provider value={{...state, getSingleProduct,  storeTokenInLS, clearTokenFromLS, userAuthentication}}>
+        <AppContext.Provider value={{...state, getSingleProduct,
+          storeTokenInLS, clearTokenFromLS, userAuthentication, authorizationToken: state.token ? `Bearer ${state.token}` : null}}>
          {children}
         </AppContext.Provider>
     ); 
@@ -222,3 +229,40 @@ export {AppProvider, AppContext, useProductContext}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+// const userAuthentication = async () => {
+//   const token = state.token; // Get token from state
+
+//   if (!token) return; // Exit if no token is found
+
+//   try {
+//     const response = await fetch("http://localhost:8000/api/auth/user", {
+//       method: "GET",
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     });
+
+//     if (response.ok) {
+//       const data = await response.json();
+//       console.log("User data:", data.userData);
+//       dispatch({ type: "SET_USER", payload: data.userData }); // Save user data in state
+//     } else {
+//       clearTokenFromLS(); // Clear token if unauthorized
+//       console.log("Failed to authenticate user.");
+//     }
+//   } catch (error) {
+//     console.log("Error fetching user data:", error);
+//   }
+// };
