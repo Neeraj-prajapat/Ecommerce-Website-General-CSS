@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 const AdminUpdate = () => {
 
-    const { authorizationToken } = useProductContext();
+    const { authorizationToken, API_URL } = useProductContext();
 
     const [data, setData] = useState({
         firstName: "",
@@ -20,7 +20,7 @@ const AdminUpdate = () => {
  const getSingleUserData = async () => {
     try {
       const response = await fetch(
-        `http://localhost:8000/api/admin/users/${params.id}`,                       //?getUserById (getting single use data)
+       `${API_URL}/api/admin/users/${params.id}`,                       //?getUserById (getting single use data)
         {
           method: "GET",
           headers: {
@@ -62,7 +62,7 @@ const AdminUpdate = () => {
         console.log("Submitting data:", data);
     
         try {
-            const response = await fetch(`http://localhost:8000/api/admin/users/update/${params.id}`, {
+            const response = await fetch(`${API_URL}/api/admin/users/update/${params.id}`, {
                 method: "PATCH",
                 headers: {
                     Authorization: authorizationToken,

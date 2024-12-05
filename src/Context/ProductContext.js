@@ -6,8 +6,9 @@ import reducer from "../Reducer/ProductReducer"
 
 const AppContext = createContext();
 
-
 const API = "https://api.pujakaitem.com/api/products"
+const API_URL = process.env.REACT_APP_API_URL         //login, register api
+
 
 const AppProvider = ({children}) => {
 
@@ -76,7 +77,7 @@ const AppProvider = ({children}) => {
       dispatch({ type: "SET_AUTH_LOADING", payload: true }); // Set auth loading
     
       try {
-        const response = await axios.get("http://localhost:8000/api/auth/user", {
+        const response = await axios.get(`${API_URL}/api/auth/user`, {
           headers: {
             Authorization: authorizationToken,
           },
@@ -113,7 +114,7 @@ const AppProvider = ({children}) => {
 
     return(
         <AppContext.Provider value={{...state, getSingleProduct,
-          storeTokenInLS, clearTokenFromLS, userAuthentication, authorizationToken: state.token ? `Bearer ${state.token}` : null}}>
+          storeTokenInLS, clearTokenFromLS, userAuthentication,  API_URL, authorizationToken: state.token ? `Bearer ${state.token}` : null}}>
          {children}
         </AppContext.Provider>
     ); 

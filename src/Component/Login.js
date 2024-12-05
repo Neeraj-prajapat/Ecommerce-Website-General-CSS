@@ -12,7 +12,9 @@ export default function Register() {
     })
 
     const navigate = useNavigate();
-    const { storeTokenInLS } = useProductContext();  // Destructure the token function from context
+    const { storeTokenInLS, API_URL } = useProductContext();  // Destructure the token function from context
+    // const URL = "http://localhost:8000/api/auth/login";
+    const URL = `${API_URL}/api/auth/login`;
 
     const handleInput = (e) => {
         let name = e.target.name;
@@ -33,7 +35,7 @@ export default function Register() {
     console.log(user);
 
       try {
-          const response = await fetch("http://localhost:8000/api/auth/login", {
+          const response = await fetch(URL, {
               method: "POST",
               headers: {
                   "Content-Type": "application/json"

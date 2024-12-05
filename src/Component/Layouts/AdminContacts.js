@@ -6,7 +6,7 @@ const AdminContacts = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const { authorizationToken } = useProductContext();
+  const { authorizationToken, API_URL } = useProductContext();
 
   const config = {
     method: "GET",
@@ -20,7 +20,7 @@ const AdminContacts = () => {
     setIsLoading(true);
     setIsError(false);
     try {
-      const response = await fetch("http://localhost:8000/api/admin/contacts", config);
+      const response = await fetch(`${API_URL}/api/admin/contacts`, config);
       const data = await response.json();
       setContacts(data);
     } catch (error) {

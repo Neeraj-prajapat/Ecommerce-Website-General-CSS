@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const AdminUsers = () => {
   const [users, setUsers] = useState([]);
-  const { authorizationToken } = useProductContext();
+  const { authorizationToken, API_URL } = useProductContext();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false); // Added error state
   const [errorMessage, setErrorMessage] = useState(null);  // State for storing detailed error message    //* optional
@@ -14,7 +14,7 @@ const AdminUsers = () => {
     setIsError(false); // Reset error state before fetching
     setErrorMessage(null); // Reset error message before the request                                       //* optional
     try {
-      const response = await fetch("http://localhost:8000/api/admin/users", {
+      const response = await fetch(`${API_URL}/api/admin/users`, {
         method: "GET",
         headers: {
           Authorization: authorizationToken,
@@ -45,7 +45,7 @@ const AdminUsers = () => {
   // Logic for deleting user (you can implement API call here)
   const deleteUser =  async (id) => {
     try {
-      const response = await fetch(`http://localhost:8000/api/admin/users/delete/${id}`, {
+      const response = await fetch(`${API_URL}/api/admin/users/delete/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: authorizationToken,
@@ -131,7 +131,7 @@ export default AdminUsers;
 //? reality me getAllUserData itna hi hai baaki error handling ke liye hai if you don't want you can remove it 
 //? and("isLoading" if good for showing loading... to users and iserror )
 //? and ("isError" is good for showing error when there is any type of error occurred   )
-//? and you can remove errorMessage if any kind of problem aur baaki dono koi problem nhi karege
+//? and you can remove "errorMessage" if any kind of problem aur baaki dono koi problem nhi karege
 //* Note:- these both isLoading and isError are not coming from api it is for this particular component for better user experience
 
 // const getAllUsersData = async () => {

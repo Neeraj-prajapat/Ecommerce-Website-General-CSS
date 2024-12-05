@@ -90,7 +90,7 @@ const Footer = () => {
                 <FaDiscord className="icons" />
                 <FaInstagram className="icons" />
                 <a
-                  href="https://www.youtube.com/channel/UCwfaAHy4zQUb2APNOGXUCCA"
+                  href="https://www.youtube.com/channel/UCHayIBgrJ3Py_9cnK43-hug"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-light"

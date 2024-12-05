@@ -71,8 +71,7 @@ const ProductReducer = (state, action) =>{
                 return { ...state, user: action.payload };    
 
             case "SET_AUTH_LOADING":
-                return { ...state, isAuthLoading: action.payload };
-              
+                return { ...state, isLoading: action.payload }; // Toggle auth loading
         
         default:
             return state
